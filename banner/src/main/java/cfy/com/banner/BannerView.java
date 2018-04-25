@@ -38,7 +38,7 @@ public class BannerView extends FrameLayout {
     private TextView mainTvContent;
     private LinearLayout mainLl;
 
-    private List<String> icons;
+    private List icons;
     private List<String> iconTitles;
     private List<ImageView> ivs;
 
@@ -54,6 +54,7 @@ public class BannerView extends FrameLayout {
     private int selectFalse;
     private int indicatorSize;
     private int indicatorMarginSize;
+    private Object nullPlaceholder;
 
     public BannerView(Context context) {
         super(context);
@@ -94,6 +95,15 @@ public class BannerView extends FrameLayout {
         setSlideSpeed(300);
         setIndicatorLocation(RelativeLayout.CENTER_IN_PARENT);
         setIndicatorBackgroundColor(Color.parseColor("#00000000"));
+        setDefaultIcon("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524632642232&di=963a8b0d90d46266a19fb2837d60f112&imgtype=0&src=http%3A%2F%2Fimg2.jiwu.com%2Fbuildpic%2F12%2F0627%2F627981_m.jpg");
+    }
+
+    public void setDefaultIcon(@NonNull @DrawableRes int iconId) {
+        nullPlaceholder = iconId;
+    }
+
+    public void setDefaultIcon(@NonNull String url) {
+        nullPlaceholder = url;
     }
 
     public void setIndicatorBackgroundColor(@ColorInt @ColorRes int color) {
@@ -103,7 +113,6 @@ public class BannerView extends FrameLayout {
     public void setIndicatorBackground(@DrawableRes int color) {
         mainRl.setBackgroundResource(color);
     }
-
 
     public void setSlideSpeed(int time) {
         try {
@@ -118,14 +127,14 @@ public class BannerView extends FrameLayout {
         }
     }
 
-    public void setIcons(@NonNull List<String> icons) {
+    public void setIcons(@NonNull List icons) {
         this.icons = icons;
         this.ivs = new ArrayList<>();
         if (icons.size() == 0) {
-            this.icons.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524632642232&di=963a8b0d90d46266a19fb2837d60f112&imgtype=0&src=http%3A%2F%2Fimg2.jiwu.com%2Fbuildpic%2F12%2F0627%2F627981_m.jpg");
+            this.icons.add(nullPlaceholder);
         } else if (icons == null) {
             this.icons = new ArrayList<>();
-            this.icons.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524632642232&di=963a8b0d90d46266a19fb2837d60f112&imgtype=0&src=http%3A%2F%2Fimg2.jiwu.com%2Fbuildpic%2F12%2F0627%2F627981_m.jpg");
+            this.icons.add(nullPlaceholder);
         }
         initData();
         initEvent();

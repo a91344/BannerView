@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import cfy.com.banner.BannerView;
@@ -37,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
         icons.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524477376970&di=e958fea35cce7c3113e6b196c7a0f07e&imgtype=0&src=http%3A%2F%2Fimg03.tooopen.com%2Fuploadfile%2Fdowns%2Fimages%2F20110714%2Fsy_20110714135215645030.jpg");
         bv.setIndicatorSize(6);
         bv.setIndicatorMarginSize(6);
-//        bv.setIconTitles(Arrays.asList("dad", "dad", "da", "das"));
+        bv.setIconTitles(Arrays.asList("dad", "dad", "da", "das"));
+        bv.setDefaultIcon(R.mipmap.ic_launcher);
         bv.setIcons(icons);
-        bv.openLoop(3000);
+
+        bv.openLoop(800);
         bv.setOnItemClickListener(new BannerView.BannerOnItemClickListener() {
             @Override
             public void onItemClickListener(View v, int position) {
